@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+require('./authentication').init(app);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
@@ -19,12 +24,6 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname, 'views/layouts'));
 
-app.get('/', (request, response) => {
-    response.render('home', {
-        name: 'User'
-    })
-});
-
-//require('./authentication').init(app);
+require('./user').init(app);
 
 module.exports = app;

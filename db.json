@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Jack",
+      "surname": "Nickson",
+      "salary": 1200,
+      "currency": "USD",
+      "position": "Software Engineer",
+      "login": "jack",
+      "password": "1234"
+    },
+    {
+      "name": "Maksim",
+      "surname": "Mozhorov",
+      "salary": 3500,
+      "currency": "USD",
+      "position": "Software Engineer",
+      "login": "max",
+      "password": "5678"
+    },
+    {
+      "name": "Samanta",
+      "surname": "Helen",
+      "salary": 2990,
+      "currency": "USD",
+      "position": "BA",
+      "login": "sam",
+      "password": "8765"
+    },
+    {
+      "name": "Ekaterina",
+      "surname": "Smirnova",
+      "salary": 5600,
+      "currency": "USD",
+      "position": "HR",
+      "login": "kate",
+      "password": "4321"
+    }
+  ]
+}

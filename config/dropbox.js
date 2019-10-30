@@ -1,9 +1,10 @@
+const access_token = require("./db.js").access_token;
+const pathToReports = require("./db.js").pathToReports;
 const Dropbox = require('dropbox').Dropbox;
 const csvtojsonV2=require("csvtojson");
 require('isomorphic-fetch');
 
-const DropboxWebApi = new Dropbox({ accessToken: "UawwV2EerFAAAAAAAAAATdVlKysRpnTJLrmC2tPAWVcsA5kA46MMKRlkOqXMoyZY" });
-const pathToReports = "/Приложения/NODE_JS_PROJECT/Users.csv";
+const DropboxWebApi = new Dropbox({ accessToken: access_token });
 
 module.exports = {
     DropboxWebApi,

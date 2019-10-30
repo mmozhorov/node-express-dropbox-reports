@@ -1,4 +1,4 @@
-const db = require("./db.js");
+const db = require("./db.js").db;
 const dropbox = require("./dropbox");
 
 module.exports = {

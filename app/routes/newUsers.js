@@ -3,6 +3,7 @@ const config = require('../../config');
 
 module.exports =  getNewUsers = (app) =>{
     app.post('/getNewUsers', (request, response) => {
+        console.log(request.body.count);
         config.dropbox.DropboxWebApi.filesDownload({path: config.dropbox.pathToReports})
             .then( resp => {
                 const users = resp.fileBinary.toString();
@@ -12,7 +13,6 @@ module.exports =  getNewUsers = (app) =>{
                 })
                     .fromString(users)
                     .then((csvRow)=>{
-                        console.log(csvRow);
                         const usersJsonObject = csvRow.slice(1).map( user => {
                             const finishedInfo = {};
                             for( let i = 0; i < csvRow[0].length; i++ ){
@@ -24,8 +24,6 @@ module.exports =  getNewUsers = (app) =>{
                             "users": usersJsonObject
                         });
                     })
-
-                //response.send("Ok");
             })
             .catch( error => {
                 console.error(error);

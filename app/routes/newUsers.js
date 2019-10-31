@@ -1,5 +1,3 @@
-const csv=require('csvtojson');
-const config = require('../../config');
 const loadFileFromDropbox = require('../actions/loadFileFromDropbox');
 
 const getFilteredUsers = (csvRow, limit, offset) => {

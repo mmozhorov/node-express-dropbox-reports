@@ -3,19 +3,41 @@
   "pathToReports": "/Приложения/NODE_JS_PROJECT/Users.csv",
   "users": [
     {
+      "name": "Jack",
+      "surname": "Simon",
       "login": "jack",
       "password": "1234",
-      "role": 0
+      "role": 0,
+      "badges": [
+        {
+          "name": "Rockstar",
+          "date": "21.09.2018"
+        },
+        {
+          "name": "Happy Halloween",
+          "date": "16.11.2018"
+        }
+      ]
     },
     {
+      "name": "Maksim",
+      "surname": "Mozhorov",
       "login": "max",
       "password": "5678",
       "role": 0
     },
     {
+      "name": "Sam",
+      "surname": "Green",
       "login": "sam",
       "password": "8765",
-      "role": 0
+      "role": 0,
+      "badges": [
+        {
+          "name": "First Aid Hero",
+          "date": "21.09.2018"
+        }
+      ]
     }
   ]
 }

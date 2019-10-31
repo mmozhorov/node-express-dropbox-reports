@@ -9,6 +9,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 require("./routes/index").getNewUsers(app);
 require("./routes/index").getTopOfSalaries(app);
-
+require("./routes/index").getUsersWithReward(app);
 
 module.exports = app;

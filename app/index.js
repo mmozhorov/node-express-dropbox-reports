@@ -8,7 +8,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 require("./routes/index").getNewUsers(app);
-
+require("./routes/index").getTopOfSalaries(app);
 
 
 module.exports = app;

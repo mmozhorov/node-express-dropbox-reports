@@ -1,5 +1,6 @@
 const db = require('../../config/db').db;
 const loadFileFromDropbox = require('../actions/loadFileFromDropbox');
+const checkUser = require('../authentication/checkUser');
 
 const getBadges = (csvRow) => {
     let usersFromCsv =  csvRow.slice(1);
@@ -16,7 +17,7 @@ const getBadges = (csvRow) => {
 };
 
 module.exports =  getUsersWithReward = (app) =>{
-    app.post('/getUsersWithReward', (request, response) => {
+    app.post('/getUsersWithReward', checkUser, (request, response) => {
         const CSVFILE = loadFileFromDropbox();
         CSVFILE.then((csvRow) => {
 

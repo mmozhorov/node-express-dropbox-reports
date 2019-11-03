@@ -1,4 +1,5 @@
 const loadFileFromDropbox = require('../actions/loadFileFromDropbox');
+const checkUser = require('../authentication/checkUser');
 
 const sortByDate = ( firstUser, secondUser) => {
   const firstUserDate = new Date(firstUser[5]);
@@ -22,7 +23,7 @@ const getFilteredUsers = (csvRow, limit, offset) => {
 };
 
 module.exports =  getNewUsers = (app) =>{
-    app.post('/getNewUsers', (request, response) => {
+    app.post('/getNewUsers', checkUser, (request, response) => {
         const {
             limit = 20,
             offset = 0

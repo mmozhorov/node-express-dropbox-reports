@@ -3,6 +3,7 @@
   "pathToReports": "/Приложения/NODE_JS_PROJECT/Users.csv",
   "users": [
     {
+      "id": 1,
       "name": "Jack",
       "surname": "Simon",
       "login": "jack",
@@ -20,6 +21,7 @@
       ]
     },
     {
+      "id": 2,
       "name": "Maksim",
       "surname": "Mozhorov",
       "login": "max",
@@ -27,6 +29,7 @@
       "role": 0
     },
     {
+      "id": 3,
       "name": "Sam",
       "surname": "Green",
       "login": "sam",

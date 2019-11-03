@@ -1,5 +1,6 @@
 const loadFileFromDropbox = require('../actions/loadFileFromDropbox');
 const getCurrency = require('../actions/getCurrentCurrency');
+const checkUser = require('../authentication/checkUser');
 
 const sortBySalary = ( firstUser, secondUser) => {
     const firstUserSalary = Number(firstUser[2]);
@@ -25,7 +26,7 @@ const getSalaries = async (csvRow) => {
 };
 
 module.exports =  getTopOfSalaries = (app) =>{
-    app.post('/getTopOfSalaries', (request, response) => {
+    app.post('/getTopOfSalaries', checkUser, (request, response) => {
 
         const CSVFILE = loadFileFromDropbox();
         CSVFILE.then((csvRow) => {

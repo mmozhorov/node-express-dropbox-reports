@@ -8,10 +8,7 @@ passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-
 passport.deserializeUser(function(id, done) {
-
-    console.log("Десериализация пользователя: ", id);
     const User = Users.find( item => item.id === id );
     User
         ? done("Not found")

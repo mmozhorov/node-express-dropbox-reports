@@ -7,6 +7,7 @@ const sortByDate = ( firstUser, secondUser) => {
   return secondUserDate.getTime() - firstUserDate.getTime();
 };
 
+
 const getFilteredUsers = (csvRow, limit, offset) => {
     let usersFromCsv =  csvRow.slice(1);
     usersFromCsv = usersFromCsv.sort(sortByDate);

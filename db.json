@@ -1,6 +1,6 @@
 {
-  "access_token": "UawwV2EerFAAAAAAAAAAT2Q9XxnAYnZptD9j744lC-y6JJBcEqX1LidL3_5RGay7",
-  "pathToReports": "/Приложения/NODE_JS_PROJECT/Users.csv",
+  "access_token": "ACCESS_TOKEN",
+  "pathToReports": "PATH",
   "users": [
     {
       "id": 1,

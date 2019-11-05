@@ -1,7 +1,9 @@
 const loadFileFromDropbox = require('../../actions/loadFileFromDropbox');
 const getFilteredUsers = require('./getFilteredUsers');
+const newUsersValidation = require('../../validation/newUsersValidation');
 
 module.exports = (request, response) => {
+    newUsersValidation("newUsersRequestSchema")(request, response);
     const {
         limit = 20,
         offset = 0

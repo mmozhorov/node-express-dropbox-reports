@@ -1,7 +1,10 @@
 const loadFileFromDropbox = require('../../actions/loadFileFromDropbox');
 const getBadges = require('./getBadges');
+const newUsersValidation = require('../../validation/newUsersValidation');
+const errorResponse = require('../../actions/errorsHandler');
 
 module.exports = (request, response) => {
+    newUsersValidation("newUsersRequestSchema")(request, response);
     const CSVFILE = loadFileFromDropbox();
     CSVFILE.then((csvRow) => {
 
@@ -9,8 +12,5 @@ module.exports = (request, response) => {
             "users": getBadges(csvRow)
         });
     })
-        .catch( error => {
-            console.error(error);
-            response.send("Something went wrong")
-        });
+        .catch( error => errorResponse(response, error));
 };

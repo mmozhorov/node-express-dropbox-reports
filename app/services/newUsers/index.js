@@ -1,7 +1,10 @@
 const loadFileFromDropbox = require('../../actions/loadFileFromDropbox');
 const getFilteredUsers = require('./getFilteredUsers');
+const newUsersValidation = require('../../validation/newUsersValidation');
+const errorResponse = require('../../actions/errorsHandler');
 
 module.exports = (request, response) => {
+    newUsersValidation("newUsersRequestSchema")(request, response);
     const {
         limit = 20,
         offset = 0
@@ -14,9 +17,6 @@ module.exports = (request, response) => {
             "users": usersJsonObject
         });
     })
-        .catch( error => {
-            console.error(error);
-            response.send("Something went wrong")
-        });
+        .catch( error => errorResponse(response, error));
 
 };

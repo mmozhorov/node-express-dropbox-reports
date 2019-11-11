@@ -6,4 +6,4 @@ module.exports = async ( resolve, reject) => {
     const users = await csvFile.fileBinary.toString();
     const csvRow = await csv({noheader:true, output: "csv"}).fromString(users);
     return csvRow;
-}
+};

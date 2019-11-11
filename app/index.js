@@ -17,7 +17,10 @@ app.use((req, res, next) => {
             return next(err);
         }
         if (!user) {
-            return res.send('Wrong username or password');
+            return res.status(401).json({
+                status: "failed",
+                errors: 'Wrong username or password'
+            });
         }
         req.logIn(user, function(err) {
             if (err) {

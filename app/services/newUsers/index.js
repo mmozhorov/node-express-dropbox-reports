@@ -13,7 +13,7 @@ module.exports = (request, response) => {
 
     CSVFILE.then((csvRow) => {
         const usersJsonObject = getFilteredUsers(csvRow, limit, offset);
-        response.status(204).json({
+        response.send({
             "users": usersJsonObject
         });
     })

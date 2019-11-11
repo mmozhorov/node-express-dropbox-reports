@@ -1,6 +1,7 @@
 const loadFileFromDropbox = require('../../actions/loadFileFromDropbox');
 const getSalaries = require('./getSalaries');
 const newUsersValidation = require('../../validation/newUsersValidation');
+const errorResponse = require('../../actions/errorsHandler');
 
 module.exports = (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
@@ -13,8 +14,5 @@ module.exports = (request, response) => {
             });
         })
     })
-        .catch( error => {
-            console.error(error);
-            response.send("Something went wrong")
-        });
+        .catch( error => errorResponse(response, error));
 };

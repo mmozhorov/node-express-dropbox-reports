@@ -1,6 +1,7 @@
 const loadFileFromDropbox = require('../../actions/loadFileFromDropbox');
 const getFilteredUsers = require('./getFilteredUsers');
 const newUsersValidation = require('../../validation/newUsersValidation');
+const errorResponse = require('../../actions/errorsHandler');
 
 module.exports = (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
@@ -12,13 +13,10 @@ module.exports = (request, response) => {
 
     CSVFILE.then((csvRow) => {
         const usersJsonObject = getFilteredUsers(csvRow, limit, offset);
-        response.send({
+        response.status(204).json({
             "users": usersJsonObject
         });
     })
-        .catch( error => {
-            console.error(error);
-            response.send("Something went wrong")
-        });
+        .catch( error => errorResponse(response, error));
 
 };

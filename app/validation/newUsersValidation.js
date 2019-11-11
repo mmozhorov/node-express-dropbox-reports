@@ -17,7 +17,7 @@ function errorResponse(schemaErrors) {
 }
 
 function validateSchema(schemaName) {
-    return (req,res) => {
+    return (req, res) => {
         let isValid =  ajv.validate(schemaName, req.body);
         if(!isValid){
             res.status(400).json(errorResponse(ajv.errors));

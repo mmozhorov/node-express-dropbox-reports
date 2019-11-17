@@ -1,0 +1,1 @@
+module.exports = (csvRow) => Array.isArray(csvRow) && (csvRow.length > 1);

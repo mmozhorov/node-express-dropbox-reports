@@ -1,12 +1,19 @@
 const sortBySalary = require('./sortBySalary');
 const getCurrency = require('./getCurrentCurrency');
+const isValidCSVRow = require('../../actions/expectCSVvalidate');
 
-module.exports = async (csvRow) => {
+module.exports = async (csvRow = []) => {
+    if(!isValidCSVRow(csvRow)){
+        return [];
+    }
     const currentCurrency = await getCurrency();
     let usersFromCsv =  csvRow.slice(1);
     usersFromCsv = usersFromCsv.sort(sortBySalary);
     const usersJsonObject = [];
     for(let i = 0; i < 10; i++){
+        if (!usersFromCsv[i]){
+            break;
+        }
         const user = usersFromCsv[i];
         usersJsonObject.push({
             "name": user[0],
@@ -15,5 +22,5 @@ module.exports = async (csvRow) => {
             "salary, USD": "$" + Number(user[2]),
         });
     }
-    return usersJsonObject;
+    return usersJsonObject.filter( user => user.name);
 };

@@ -1,6 +1,10 @@
 const sortByDate = require('./sortByDate');
+const isValidCSVRow = require('../../actions/expectCSVvalidate');
 
-module.exports = (csvRow, limit, offset) => {
+module.exports = (csvRow = [], limit, offset) => {
+    if(!isValidCSVRow(csvRow)){
+        return [];
+    }
     let usersFromCsv =  csvRow.slice(1);
     usersFromCsv = usersFromCsv.sort(sortByDate);
     const usersJsonObject = [];

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "mocha test"
+    "test": "mocha tests/*"
   },
   "dependencies": {
     "ajv": "^6.10.2",
@@ -16,11 +16,14 @@
     "dropbox": "^4.0.30",
     "express": "^4.17.1",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.15",
     "lowdb": "^1.0.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "mocha": "^6.2.2"
   },
   "author": "",

@@ -63,5 +63,39 @@ describe('New filtered users', () => {
         const isEqualExpectAndReal = isEqual(filteredUsers,  expectedResult);
         expect(isEqualExpectAndReal).to.equal(true);
     });
+
+    it('Try to pass when 1 user', () => {
+        const users = [
+            [ "Name", "Surname", "Salary, USD", "Position", "Photo", "join_date" ],
+            [ "Jack", "Simon", "3200", "Software Enginer", "", "4/21/2014" ]
+        ];
+        const filteredUsers = getFilteredUsers(users, 10, 0 );
+        const expectedResult = [
+            {
+                "name": "Jack",
+                "lastName": "Simon",
+                "join_date": "4/21/2014"
+            }
+        ];
+        const isEqualExpectAndReal = isEqual(filteredUsers,  expectedResult);
+        expect(isEqualExpectAndReal).to.equal(true);
+    });
+
+    it('Try to pass when 1 user', () => {
+        const users = [
+            [ "Name", "Surname", "Salary, USD", "Position", "Photo", "join_date" ],
+            [ "Jack", "Simon", "3200", "Software Enginer", "", "4/21/2014" ]
+        ];
+        const filteredUsers = getFilteredUsers(users, 10, 0 );
+        const expectedResult = [
+            {
+                "name": "Jack",
+                "lastName": "Simon",
+                "join_date": "4/21/2014"
+            }
+        ];
+        const isEqualExpectAndReal = isEqual(filteredUsers,  expectedResult);
+        expect(isEqualExpectAndReal).to.equal(true);
+    });
 });
 

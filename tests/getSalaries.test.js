@@ -82,6 +82,32 @@ describe('Filtered salaries', () => {
         expect(isEqualExpectAndReal).to.equal(true);
     });
 
+    it('Try to pass without users', async function () {
+        const users = [];
+        const filteredUsers = await getSalaries(users);
+        const expectedResult = [];
+        const isEqualExpectAndReal = isEqual(filteredUsers,  expectedResult);
+        expect(isEqualExpectAndReal).to.equal(true);
+    });
+
+    it('Try to pass with 1 user', async function () {
+        const users = [
+            [ "Name", "Surname", "Salary, USD", "Position", "Photo", "join_date" ],
+            [ "Kristina", "Boldirev", "4356", "Team Lead", "", "12/10/2012" ],
+        ];
+        const filteredUsers = await getSalaries(users);
+        const expectedResult = [
+            {
+                "name": "Kristina",
+                "lastName": "Boldirev",
+                "salary, RUB": "278296.56Р",
+                "salary, USD": "$4356"
+            }
+        ];
+        const isEqualExpectAndReal = isEqual(filteredUsers,  expectedResult);
+        expect(isEqualExpectAndReal).to.equal(true);
+    });
+
     it('Try to pass without params', async function () {
         const users = [];
         const expectedResult = [];

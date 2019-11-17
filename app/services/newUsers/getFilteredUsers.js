@@ -1,7 +1,8 @@
 const sortByDate = require('./sortByDate');
+const isValidCSVRow = require('../../actions/expectCSVvalidate');
 
 module.exports = (csvRow = [], limit, offset) => {
-    if (!csvRow.length){
+    if(!isValidCSVRow(csvRow)){
         return [];
     }
     let usersFromCsv =  csvRow.slice(1);

@@ -1,7 +1,8 @@
 const db = require('../../../config/db').db;
+const isValidCSVRow = require('../../actions/expectCSVvalidate');
 
 module.exports = (csvRow = []) => {
-    if (!csvRow.length){
+    if(!isValidCSVRow(csvRow)){
         return [];
     }
     let usersFromCsv =  csvRow.slice(1);

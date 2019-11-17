@@ -1,6 +1,9 @@
 const sortByDate = require('./sortByDate');
 
-module.exports = (csvRow, limit, offset) => {
+module.exports = (csvRow = [], limit, offset) => {
+    if (!csvRow.length){
+        return [];
+    }
     let usersFromCsv =  csvRow.slice(1);
     usersFromCsv = usersFromCsv.sort(sortByDate);
     const usersJsonObject = [];

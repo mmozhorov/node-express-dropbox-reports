@@ -1,4 +1,3 @@
-const mocha = require('mocha');
 const chai = require('chai');
 const isEqual = require('lodash').isEqual;
 const expect = chai.expect;
@@ -59,7 +58,7 @@ describe('New filtered users', () => {
     });
 
     it('Try to pass without params', () => {
-        const filteredUsers = getFilteredUsers(users);
+        const filteredUsers = getFilteredUsers();
         const expectedResult = [];
         const isEqualExpectAndReal = isEqual(filteredUsers,  expectedResult);
         expect(isEqualExpectAndReal).to.equal(true);

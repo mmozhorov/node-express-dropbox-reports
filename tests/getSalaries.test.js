@@ -1,4 +1,3 @@
-const mocha = require('mocha');
 const chai = require('chai');
 const isEqual = require('lodash').isEqual;
 const expect = chai.expect;

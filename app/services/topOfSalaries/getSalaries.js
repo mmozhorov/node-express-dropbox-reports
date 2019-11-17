@@ -1,7 +1,10 @@
 const sortBySalary = require('./sortBySalary');
 const getCurrency = require('./getCurrentCurrency');
 
-module.exports = async (csvRow) => {
+module.exports = async (csvRow = []) => {
+    if (!csvRow.length){
+        return [];
+    }
     const currentCurrency = await getCurrency();
     let usersFromCsv =  csvRow.slice(1);
     usersFromCsv = usersFromCsv.sort(sortBySalary);

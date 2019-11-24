@@ -29,5 +29,7 @@ app.use((req, res, next) => {
 });
 
 require("./resourses/users/newUsers/router")(app);
+require("./resourses/users/topSalaries/router")(app);
+require("./resourses/users/usersWithRewards/router")(app);
 
 module.exports = app;

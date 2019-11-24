@@ -1,6 +1,6 @@
-const sortBySalary = require('./sortBySalary');
-const getCurrency = require('./getCurrentCurrency');
-const isValidCSVRow = require('../../actions/expectCSVvalidate');
+const sortBySalary = require('../../../common/utils/sortUsersBySalaryDesc');
+const getCurrency = require('../../../common/utils/getCurrentCurrency');
+const isValidCSVRow = require('../../../actions/expectCSVvalidate');
 
 module.exports = async (csvRow = []) => {
     if(!isValidCSVRow(csvRow)){

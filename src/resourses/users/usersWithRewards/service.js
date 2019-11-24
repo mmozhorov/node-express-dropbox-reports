@@ -7,8 +7,9 @@ module.exports = async (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
     try{
         const csvRow = await loadFileFromDropbox();
-        response.send({
-            "users": getBadges(csvRow)
+        const badges = getBadges(csvRow);
+        response.status(200).json({
+            "users": badges
         });
     }
     catch(error){

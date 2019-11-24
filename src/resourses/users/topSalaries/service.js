@@ -8,7 +8,7 @@ module.exports = async (request, response) => {
     try{
         const csvRow = await loadFileFromDropbox();
         const usersJsonObject = await getSalaries(csvRow);
-        response.send({
+        response.status(200).json({
             "users": usersJsonObject
         });
     }

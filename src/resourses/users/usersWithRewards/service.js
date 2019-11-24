@@ -3,14 +3,16 @@ const getBadges = require('./mapper');
 const newUsersValidation = require('../../../validation/newUsersValidation');
 const errorResponse = require('../../../common/utils/errorsHandler');
 
-module.exports = (request, response) => {
+module.exports = async (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
-    const CSVFILE = loadFileFromDropbox();
-    CSVFILE.then((csvRow) => {
-
+    try{
+        const csvRow = await loadFileFromDropbox();
         response.send({
             "users": getBadges(csvRow)
         });
-    })
-        .catch( error => errorResponse(response, error));
+    }
+    catch(error){
+        errorResponse(response, error);
+    }
+
 };

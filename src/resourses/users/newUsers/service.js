@@ -3,20 +3,21 @@ const getFilteredUsers = require('./mapper');
 const newUsersValidation = require('../../../validation/newUsersValidation');
 const errorResponse = require('../../../common/utils/errorsHandler');
 
-module.exports = (request, response) => {
+module.exports = async (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
     const {
         limit = 20,
         offset = 0
     } = request.body;
-    const CSVFILE = loadFileFromDropbox();
-
-    CSVFILE.then((csvRow) => {
+    try{
+        const csvRow = await loadFileFromDropbox();
         const usersJsonObject = getFilteredUsers(csvRow, limit, offset);
-        response.send({
+        response.status(200).json({
             "users": usersJsonObject
         });
-    })
-        .catch( error => errorResponse(response, error));
+    }
+    catch(error) {
+        errorResponse(response, error);
+    }
 
 };

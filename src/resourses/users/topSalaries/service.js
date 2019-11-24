@@ -3,16 +3,16 @@ const getSalaries = require('./mapper');
 const newUsersValidation = require('../../../validation/newUsersValidation');
 const errorResponse = require('../../../common/utils/errorsHandler');
 
-module.exports = (request, response) => {
+module.exports = async (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
-    const CSVFILE = loadFileFromDropbox();
-    CSVFILE.then((csvRow) => {
-        const usersJsonObject = getSalaries(csvRow);
-        usersJsonObject.then( resp => {
-            response.send({
-                "users": resp
-            });
-        })
-    })
-        .catch( error => errorResponse(response, error));
+    try{
+        const csvRow = await loadFileFromDropbox();
+        const usersJsonObject = await getSalaries(csvRow);
+        response.send({
+            "users": usersJsonObject
+        });
+    }
+    catch(error){
+        errorResponse(response, error)
+    }
 };

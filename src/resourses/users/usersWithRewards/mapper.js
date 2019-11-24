@@ -1,5 +1,5 @@
-const db = require('../../../config/db').db;
-const isValidCSVRow = require('../../actions/expectCSVvalidate');
+const db = require('../../../../config/db').db;
+const isValidCSVRow = require('../../../common/utils/expectCSVvalidate');
 
 module.exports = (csvRow = []) => {
     if(!isValidCSVRow(csvRow)){

@@ -1,5 +1,5 @@
 const csv=require('csvtojson');
-const config = require('../../config');
+const config = require('../../../config');
 
 module.exports = async ( resolve, reject) => {
     const csvFile = await config.dropbox.DropboxWebApi.filesDownload({path: config.dropbox.pathToReports});

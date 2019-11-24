@@ -1,7 +1,7 @@
-const loadFileFromDropbox = require('../../actions/loadFileFromDropbox');
-const getBadges = require('./getBadges');
-const newUsersValidation = require('../../validation/newUsersValidation');
-const errorResponse = require('../../actions/errorsHandler');
+const loadFileFromDropbox = require('../../../common/utils/loadFileFromDropbox');
+const getBadges = require('./mapper');
+const newUsersValidation = require('../../../validation/newUsersValidation');
+const errorResponse = require('../../../common/utils/errorsHandler');
 
 module.exports = (request, response) => {
     newUsersValidation("newUsersRequestSchema")(request, response);

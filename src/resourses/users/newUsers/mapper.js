@@ -1,7 +1,7 @@
 const sortByDate = require('../../../common/utils/sortUsersByDateDesc');
 const isValidCSVRow = require('../../../common/utils/expectCSVvalidate');
 
-module.exports = (csvRow = [], limit, offset) => {
+module.exports = (csvRow = []) => {
     if(!isValidCSVRow(csvRow)){
         return [];
     }

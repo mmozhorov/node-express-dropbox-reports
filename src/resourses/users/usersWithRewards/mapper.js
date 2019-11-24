@@ -11,9 +11,9 @@ module.exports = (csvRow = []) => {
         const currentUser = usersFromCsv.find( userArr => userArr[0] === item.name && userArr[1] === item.surname);
         if (currentUser){
             return {
-                name: currentUser[0],
-                surname: currentUser[1],
-                badges: item.badges
+                "name": currentUser[0],
+                "surname": currentUser[1],
+                "badges": item.badges
             };
         }
     }).filter( user => user);

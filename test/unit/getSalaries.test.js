@@ -1,7 +1,7 @@
 const chai = require('chai');
 const isEqual = require('lodash').isEqual;
 const expect = chai.expect;
-const getSalaries = require('../app/services/topOfSalaries/getSalaries');
+const getSalaries = require('../../src/resourses/users/topSalaries/service');
 const users = require('./testUsers').users;
 
 describe('Filtered salaries', () => {

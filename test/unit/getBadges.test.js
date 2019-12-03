@@ -1,7 +1,7 @@
 const chai = require('chai');
 const isEqual = require('lodash').isEqual;
 const expect = chai.expect;
-const getBadges = require('../app/services/usersWithReward/getBadges');
+const getBadges = require('../../src/resourses/users/usersWithRewards/service');
 const users = require('./testUsers').users;
 
 describe('Users with rewards', () => {

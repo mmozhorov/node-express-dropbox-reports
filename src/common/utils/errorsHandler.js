@@ -10,7 +10,7 @@ const findProperty = (obj) => {
 };
 
 module.exports = function (response, message, status = 400) {
-    const responseResponse = findProperty(message);
+    const responseResponse = findProperty(message) ? findProperty(message): 500;
     response.status(responseResponse).json({
         status: "failed",
         errors: message

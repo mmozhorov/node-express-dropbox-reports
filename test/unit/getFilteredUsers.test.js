@@ -1,7 +1,7 @@
 const chai = require('chai');
 const isEqual = require('lodash').isEqual;
 const expect = chai.expect;
-const getFilteredUsers = require('../app/services/newUsers/getFilteredUsers');
+const getFilteredUsers = require('../../src/resourses/users/newUsers/service');
 const users = require('./testUsers').users;
 
 describe('New filtered users', () => {

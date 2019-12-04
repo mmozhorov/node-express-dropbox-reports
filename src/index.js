@@ -1,10 +1,15 @@
 const express = require('express');
+const router = express.Router();
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const log4js = require('log4js');
 const errorsLogger = log4js.getLogger("errors");
 const app = express();
+const { ExpressSwagger } = require('node-swagger-ui-express');
 require('./authentication/config-passport');
+
+ExpressSwagger.initController('/', express, router);
+
 
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 app.use(bodyParser.json());

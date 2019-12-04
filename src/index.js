@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const log4js = require('log4js');
+const errorsLogger = log4js.getLogger("errors");
 const app = express();
 require('./authentication/config-passport');
+
+app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
@@ -10,21 +14,28 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
     passport.authenticate('local', function(err, user) {
-        if (err) {
-            return next(err);
-        }
-        if (!user) {
-            return res.status(401).json({
-                status: "failed",
-                errors: 'Wrong username or password'
+        try{
+            if (err) {
+                throw new Error(err);
+            }
+            if (!user) {
+                return res.status(401).json({
+                    status: "failed",
+                    errors: 'Wrong username or password'
+                });
+            }
+            req.logIn(user, function(err) {
+                if (err) {
+                    throw new Error(err);
+                }
+                next();
             });
         }
-        req.logIn(user, function(err) {
-            if (err) {
-                return next(err);
-            }
-            next();
-        });
+        catch(error){
+            errorsLogger.error(error);
+            return next(err);
+        }
+
     })(req, res, next);
 });
 

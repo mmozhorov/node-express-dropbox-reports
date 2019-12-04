@@ -14,23 +14,28 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
     passport.authenticate('local', function(err, user) {
-        if (err) {
-            errorsLogger.error(err);
-            return next(err);
-        }
-        if (!user) {
-            errorsLogger.warn(err);
-            return res.status(401).json({
-                status: "failed",
-                errors: 'Wrong username or password'
+        try{
+            if (err) {
+                throw new Error(err);
+            }
+            if (!user) {
+                return res.status(401).json({
+                    status: "failed",
+                    errors: 'Wrong username or password'
+                });
+            }
+            req.logIn(user, function(err) {
+                if (err) {
+                    throw new Error(err);
+                }
+                next();
             });
         }
-        req.logIn(user, function(err) {
-            if (err) {
-                return next(err);
-            }
-            next();
-        });
+        catch(error){
+            errorsLogger.error(error);
+            return next(err);
+        }
+
     })(req, res, next);
 });
 

@@ -1,0 +1,47 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Api Documentation",
+    "version": "1.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/newUsers": {
+      "parameters": [
+        {
+          "name": "username",
+          "required": true,
+          "in": "body",
+          "type": "string",
+          "description": "The username for auth user"
+        },
+        {
+          "name": "password",
+          "required": true,
+          "in": "body",
+          "type": "string",
+          "description": "The password for auth user"
+        }
+      ],
+      "post": {
+        "operationId": "newUsers",
+        "summary": "Get new users",
+        "description": "Get new users from CSV",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "202": {
+            "description": "202 response",
+            "examples": {}
+          }
+        }
+      }
+    }
+  }
+}

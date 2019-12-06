@@ -11,25 +11,24 @@
     "application/json"
   ],
   "paths": {
-    "/newUsers": {
+    "/reports/new-users": {
       "parameters": [
         {
-          "name": "username",
+          "name": "limit",
           "required": true,
-          "in": "body",
-          "type": "string",
-          "description": "The username for auth user"
+          "in": "path",
+          "type": "number"
         },
         {
-          "name": "password",
+          "name": "Authorization",
           "required": true,
-          "in": "body",
+          "in": "header",
           "type": "string",
-          "description": "The password for auth user"
+          "default": "Bearer "
         }
       ],
-      "post": {
-        "operationId": "newUsers",
+      "get": {
+        "operationId": "new-users",
         "summary": "Get new users",
         "description": "Get new users from CSV",
         "produces": [
@@ -37,7 +36,7 @@
         ],
         "responses": {
           "202": {
-            "description": "202 response",
+            "description": "200 response",
             "examples": {}
           }
         }

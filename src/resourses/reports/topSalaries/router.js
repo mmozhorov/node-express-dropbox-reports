@@ -1,2 +1,6 @@
+const express = require('express');
+const router = express.Router();
 const service = require('./service');
-module.exports = app => app.get('/reports/top-salaries', service);
+
+router.get('/', service);
+module.exports = router;

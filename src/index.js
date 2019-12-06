@@ -15,8 +15,10 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/auth', require('./resourses/auth/router'));
 app.use(jwt());
 
-require("./resourses/reports/newUsers/router")(app);
-require("./resourses/reports/topSalaries/router")(app);
-require("./resourses/reports/usersWithRewards/router")(app);
+app.use('/reports/new-users', require("./resourses/reports/newUsers/router") );
+app.use('/reports/top-salaries', require("./resourses/reports/topSalaries/router") );
+app.use('/reports/with-reward', require("./resourses/reports/usersWithRewards/router") );
+
+app.use('/user', require("./resourses/user/router"));
 
 module.exports = app;

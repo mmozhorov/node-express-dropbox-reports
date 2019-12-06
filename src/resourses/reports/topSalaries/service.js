@@ -9,7 +9,7 @@ module.exports = async (request, response) => {
     try{
         const csvRow = await loadFileFromDropbox();
         const users = await getSalaries(csvRow);
-        const usersJsonObject = paginationFilter(users, request.body);
+        const usersJsonObject = paginationFilter(users, request.query);
         response.status(200).json({
             "users": usersJsonObject
         });

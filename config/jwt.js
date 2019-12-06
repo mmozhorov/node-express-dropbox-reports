@@ -3,13 +3,18 @@ const secretToken = require('./db').secretToken;
 
 module.exports = jwt;
 
+
 function jwt() {
-    const secret  = secretToken;
-    return expressJwt({ secret }).unless({
+    return expressJwt({ "secret": secretToken }).unless({
         path: [
+            {
+                url: '/api-docs',
+                methods: ["GET"]
+            },
             // public routes that don't require authentication
-            '/users',
-            '/auth'
+            // '/api-docs',
+            // '/users',
+            // '/auth',
         ]
     });
 }

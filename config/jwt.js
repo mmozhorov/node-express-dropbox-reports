@@ -4,7 +4,7 @@ const secretToken = require('./db').secretToken;
 module.exports = jwt;
 
 function jwt() {
-    const { secret } = secretToken;
+    const secret  = secretToken;
     return expressJwt({ secret }).unless({
         path: [
             // public routes that don't require authentication

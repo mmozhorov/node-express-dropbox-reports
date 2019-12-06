@@ -6,7 +6,6 @@ const app = express();
 const jwt = require('../config/jwt');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../config/swagger.json');
-require('./authentication/config-passport');
 
 app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 app.use(bodyParser.json());

@@ -15,11 +15,16 @@ function authenticate ({ username = "", password = "" }){
 }
 
 module.exports = (request, response, next) => {
-    const user = authenticate(request.body);
-    if (!user){
-        response.status(400).json({ message: 'Username or password is incorrect' })
+    try{
+        const user = authenticate(request.body);
+        if (!user){
+            throw 'Username or password is incorrect';
+        }
+        else{
+            response.json(user);
+        }
     }
-    else{
-        response.json(user);
+    catch(error){
+        next(error);
     }
 };

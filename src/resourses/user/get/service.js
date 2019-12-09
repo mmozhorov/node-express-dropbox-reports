@@ -1,6 +1,6 @@
-const loadFileFromDropbox = require('../../common/utils/loadFileFromDropbox');
+const loadFileFromDropbox = require('../../../common/utils/loadFileFromDropbox');
 const getAllUsers = require('./mapper');
-const errorResponse = require('../../common/utils/errorsHandler');
+const errorResponse = require('../../../common/utils/errorsHandler');
 
 module.exports = async (request, response) => {
     try{

@@ -13,12 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/auth', require('./resourses/auth/router'));
+
 app.use(jwt());
 
-app.use('/reports/new-users', require("./resourses/reports/newUsers/router") );
-app.use('/reports/top-salaries', require("./resourses/reports/topSalaries/router") );
-app.use('/reports/with-reward', require("./resourses/reports/usersWithRewards/router") );
-
+app.use('/reports', require("./resourses/reports/router") );
 app.use('/user', require("./resourses/user/router"));
 
 app.use(errorHandler);

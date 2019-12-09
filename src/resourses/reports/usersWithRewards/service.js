@@ -4,7 +4,7 @@ const newUsersValidation = require('../../../validation/newUsersValidation');
 const errorResponse = require('../../../common/utils/errorsHandler');
 const paginationFilter = require('../../../common/utils/paginationFilter');
 
-module.exports = async (request, response) => {
+module.exports = async (request, response, next) => {
     newUsersValidation("newUsersRequestSchema")(request, response);
     try{
         const csvRow = await loadFileFromDropbox();
@@ -15,7 +15,7 @@ module.exports = async (request, response) => {
         });
     }
     catch(error){
-        errorResponse(response, error);
+        next(error);
     }
 
 };

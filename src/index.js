@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const errorHandler = require('./common/utils/errorsHandler');
 const log4js = require('log4js');
-const errorsLogger = log4js.getLogger("errors");
 const app = express();
 const jwt = require('../config/jwt');
 const swaggerUi = require('swagger-ui-express');
@@ -20,5 +20,7 @@ app.use('/reports/top-salaries', require("./resourses/reports/topSalaries/router
 app.use('/reports/with-reward', require("./resourses/reports/usersWithRewards/router") );
 
 app.use('/user', require("./resourses/user/router"));
+
+app.use(errorHandler);
 
 module.exports = app;

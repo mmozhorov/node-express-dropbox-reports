@@ -1,22 +1,18 @@
-const log4js = require('log4js');
-const errorsLogger = log4js.getLogger("errors");
+module.exports = errorHandler;
 
-const findProperty = (obj) => {
-    let status = "";
-    Object.keys(obj).forEach(key => {
-        if (key === "status"){
-            status = obj[key];
-        }
+function errorHandler(err, req, res, next) {
 
-    });
-    return Number(status);
-};
+    if (typeof (err) === 'string') {
+        // custom application error
+        return res.status(400).json({ message: err });
+    }
 
-module.exports = function (response, message, status = 400) {
-    const responseResponse = findProperty(message) ? findProperty(message): 500;
-    errorsLogger.error(message);
-    response.status(responseResponse).json({
-        status: "failed",
-        errors: message
-    });
-};
+    if (err.name === 'UnauthorizedError') {
+        // jwt authentication error
+        return res.status(401).json({ message: 'Invalid Token' });
+    }
+
+    return res.status(500).json({ message: "Something went wrong" });
+    // default to 500 server error
+
+}

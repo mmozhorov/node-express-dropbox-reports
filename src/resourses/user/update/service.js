@@ -1,4 +1,5 @@
 const loadFileFromDropbox = require('../../../common/utils/loadFileFromDropbox');
+const uploadFileToDropbox = require('../../../common/utils/uploadFileToDropbox');
 const getAllUsers = require('./mapper');
 
 module.exports = async (request, response, next) => {
@@ -9,8 +10,10 @@ module.exports = async (request, response, next) => {
         if (!userJsonObject){
             throw new Error(404);
         }
+
+        const isSuccess = uploadFileToDropbox(csvRow);
         response.status(200).json({
-            "result": userJsonObject
+            "result": "Successfully updated"
         });
     }
     catch(error) {

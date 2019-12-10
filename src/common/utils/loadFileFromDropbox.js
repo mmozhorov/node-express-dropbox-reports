@@ -1,8 +1,10 @@
 const csv=require('csvtojson');
+const axios = require('axios');
 const config = require('../../../config');
 
 module.exports = async () => {
     const csvFile = await config.dropbox.DropboxWebApi.filesDownload({path: config.dropbox.pathToReports});
+    const file = await axios.get()
     const users = await csvFile.fileBinary.toString();
     const csvRow = await csv({noheader:true, output: "csv"}).fromString(users);
     return csvRow;

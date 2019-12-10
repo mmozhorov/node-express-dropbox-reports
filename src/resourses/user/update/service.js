@@ -1,8 +1,7 @@
 const loadFileFromDropbox = require('../../../common/utils/loadFileFromDropbox');
 const getAllUsers = require('./mapper');
-const errorResponse = require('../../../common/utils/errorsHandler');
 
-module.exports = async (request, response) => {
+module.exports = async (request, response, next) => {
     try{
         const csvRow = await loadFileFromDropbox();
         const users = getAllUsers(csvRow);
@@ -15,6 +14,6 @@ module.exports = async (request, response) => {
         });
     }
     catch(error) {
-        errorResponse(response, error);
+        next(error);
     }
 };

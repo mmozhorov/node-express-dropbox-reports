@@ -8,7 +8,10 @@ module.exports = async (request, response, next) => {
         const users = getAllUsers(csvRow);
         const userJsonObject = users.find(user => user.id === Number(request.params.id));
         if (!userJsonObject){
-            throw new Error(404);
+            throw {
+                status: 404,
+                responseText: "User not found"
+            };
         }
 
         const isSuccess = uploadFileToDropbox(csvRow);

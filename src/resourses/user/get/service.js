@@ -1,4 +1,4 @@
-const loadFileFromDropbox = require('../../../common/utils/loadFileFromDropbox');
+const loadFileFromDropbox = require('../../../common/dropbox/loadFileFromDropbox');
 const getAllUsers = require('./mapper');
 
 module.exports = async (request, response, next) => {

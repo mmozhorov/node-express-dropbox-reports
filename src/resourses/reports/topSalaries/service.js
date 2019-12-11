@@ -1,4 +1,4 @@
-const loadFileFromDropbox = require('../../../common/utils/loadFileFromDropbox');
+const loadFileFromDropbox = require('../../../common/dropbox/loadFileFromDropbox');
 const getSalaries = require('./mapper');
 const paginationFilter = require('../../../common/utils/paginationFilter');
 

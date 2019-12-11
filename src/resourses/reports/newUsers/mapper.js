@@ -1,4 +1,4 @@
-const sortByDate = require('../../../common/utils/sortUsersByDateDesc');
+const sortByDate = require('../../../common/sorting/sortUsersByDateDesc');
 const isValidCSVRow = require('../../../common/utils/expectCSVvalidate');
 
 module.exports = (csvRow = []) => {

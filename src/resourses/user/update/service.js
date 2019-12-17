@@ -14,7 +14,18 @@ module.exports = async (request, response, next) => {
             };
         }
 
+        response.status(200).json({
+           result:  userJsonObject
+        });
+
+
         const isSuccess = uploadFileToDropbox(csvRow);
+        if(!isSuccess){
+            throw {
+              status: 500,
+              responseText: "Something went wrong"
+            };
+        }
 
         response.status(200).json({
             "result": "Successfully updated"

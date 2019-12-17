@@ -1,5 +1,4 @@
 const csv=require('csvtojson');
-const axios = require('axios');
 const config = require('../../../config');
 
 module.exports = async () => {

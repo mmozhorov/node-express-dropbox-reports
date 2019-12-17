@@ -1,6 +1,7 @@
 const loadFileFromDropbox = require('../../../common/dropbox/loadFileFromDropbox');
 const uploadFileToDropbox = require('../../../common/dropbox/uploadFileToDropbox');
 const getAllUsers = require('./mapper');
+const getUpdatedUser = require('../../../common/utils/getUpdatedUser');
 
 module.exports = async (request, response, next) => {
     try{
@@ -13,13 +14,15 @@ module.exports = async (request, response, next) => {
                 responseText: "User not found"
             };
         }
+        const updatedUser = getUpdatedUser(userJsonObject, request.body);
+
+        console.log(updatedUser);
 
         response.status(200).json({
-           result:  userJsonObject
+           result:  updatedUser
         });
 
-
-        const isSuccess = uploadFileToDropbox(csvRow);
+        const isSuccess = await uploadFileToDropbox(csvRow);
         if(!isSuccess){
             throw {
               status: 500,

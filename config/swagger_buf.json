@@ -1,0 +1,46 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Api Documentation",
+    "version": "1.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/reports/new-users": {
+      "parameters": [
+        {
+          "name": "limit",
+          "required": true,
+          "in": "path",
+          "type": "number"
+        },
+        {
+          "name": "Authorization",
+          "required": true,
+          "in": "header",
+          "type": "string",
+          "default": "Bearer "
+        }
+      ],
+      "get": {
+        "operationId": "new-users",
+        "summary": "Get new users",
+        "description": "Get new users from CSV",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "202": {
+            "description": "200 response",
+            "examples": {}
+          }
+        }
+      }
+    }
+  }
+}

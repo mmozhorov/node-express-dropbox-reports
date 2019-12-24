@@ -1,6 +1,6 @@
 module.exports ={
-    "title": "newUsersRequestSchema",
-    "description": "Properties required to get new filtered users",
+    "title": "reportsRequestSchema",
+    "description": "Properties required to get filtered reports",
     "type": "object",
     "properties":{
         "limit": {

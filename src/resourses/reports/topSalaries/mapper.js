@@ -1,4 +1,4 @@
-const sortBySalary = require('../../../common/utils/sortUsersBySalaryDesc');
+const sortBySalary = require('../../../common/sorting/sortUsersBySalaryDesc');
 const getCurrency = require('../../../common/utils/getCurrentCurrency');
 const isValidCSVRow = require('../../../common/utils/expectCSVvalidate');
 

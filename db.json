@@ -1,6 +1,7 @@
 {
   "access_token": "ACCESS_TOKEN",
   "pathToReports": "PATH",
+  "bufPathToReports": "PATH",
   "secret": "YOUR_SECRET_TOKEN",
   "users": [
     {

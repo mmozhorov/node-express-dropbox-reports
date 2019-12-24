@@ -1,17 +1,11 @@
 module.exports = errorHandler;
 
 function errorHandler(err, req, res, next) {
-    if (typeof (err) === 'string') {
-        // custom application error
-        return res.status(400).json({ message: err });
+    if (err.status && err.responseText){
+        return res.status(err.status).json(err);
     }
-
-    if (err.name === 'UnauthorizedError') {
-        // jwt authentication error
-        return res.status(401).json({ message: 'Invalid Token' });
-    }
-
-    return res.status(500).json({ message: "Something went wrong" });
-    // default to 500 server error
-
+    return res.status(500).json({
+        status: 500,
+        responseText: "Something went wrong"
+    });
 }

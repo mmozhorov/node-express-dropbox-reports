@@ -18,10 +18,13 @@ module.exports = (request, response, next) => {
     try{
         const user = authenticate(request.body);
         if (!user){
-            throw 'Username or password is incorrect';
+            throw {
+                status: 401,
+                responseText: 'Username or password is incorrect'
+            };
         }
         else{
-            response.json(user);
+            response.status(200).json(user);
         }
     }
     catch(error){

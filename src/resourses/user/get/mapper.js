@@ -1,4 +1,4 @@
-const isValidCSVRow = require('../../common/utils/expectCSVvalidate');
+const isValidCSVRow = require('../../../common/utils/expectCSVvalidate');
 
 module.exports = (csvRow = []) => {
     if(!isValidCSVRow(csvRow)){

@@ -1,4 +1,4 @@
-module.exports = function(currentData, previousData){
+module.exports = function(previousData, currentData){
     return {
         id: previousData.id,
         name: currentData.name || previousData.name,

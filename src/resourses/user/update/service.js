@@ -1,12 +1,14 @@
 const loadFileFromDropbox = require('../../../common/dropbox/loadFileFromDropbox');
 const uploadFileToDropbox = require('../../../common/dropbox/uploadFileToDropbox');
 const getAllUsers = require('./mapper');
+const getHeadersFromCSV = require('../../../common/utils/getHeadersFromCSV');
 const getUpdatedUser = require('../../../common/utils/getUpdatedUser');
 
 module.exports = async (request, response, next) => {
     try{
         const csvRow = await loadFileFromDropbox();
         const users = getAllUsers(csvRow);
+        const headersCSV = getHeadersFromCSV(csvRow);
         const userJsonObject = users.find(user => user.id === Number(request.params.id));
         if (!userJsonObject){
             throw {
@@ -15,14 +17,8 @@ module.exports = async (request, response, next) => {
             };
         }
         const updatedUser = getUpdatedUser(userJsonObject, request.body);
-
-        console.log(updatedUser);
-
-        response.status(200).json({
-           result:  updatedUser
-        });
-
-        const isSuccess = await uploadFileToDropbox(csvRow);
+        const newUsersInfo = users.map( item => item.id === updatedUser.id ? updatedUser: item);
+        const isSuccess = await uploadFileToDropbox(newUsersInfo, headersCSV);
         if(!isSuccess){
             throw {
               status: 500,
